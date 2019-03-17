@@ -12,12 +12,13 @@
 */
 
 Route::get('/', function () {
-    return redirect("/login");
+    return redirect('login');
 });
 
 Auth::routes();
-Route::match(["GET", "POST"], "/register", function(){
-    return redirect("/login");
-})->name("register");
+Route::match(['GET', 'POST'], 'register', function(){
+    return redirect('login');
+})->name('register');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
+Route::resource('users', 'UserController');
