@@ -28,7 +28,12 @@
                 </div>
             </div>
         </form>
-        </div>
+      </div>
+      <div class="col-md-6 text-right">
+        <a 
+          href="{{route('users.create')}}" 
+          class="btn btn-primary">Create user</a>
+    </div>
     </div>
     <table class="table table-bordered">
       <thead>
