@@ -15,9 +15,8 @@ class UserController extends Controller
     {
         $users = \App\User::paginate(10);
         $filterKeyword = $request->get('keyword');
-        if($filterKeyword){
-            $users = \App\User::where('email', 'LIKE', "%$filterKeyword%")->paginate(10);
-        }
+        $status = $request->get('status');
+        $users = \App\User::where('email', 'LIKE', "%$filterKeyword%")->Where('status', 'LIKE' ,"$status%")->paginate(10);
         return view('users.index', ['users' => $users]);
     }
 
