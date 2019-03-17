@@ -92,7 +92,7 @@ class UserController extends Controller
         $user->address = $request->get('address');
         $user->phone = $request->get('phone');
         $user->status = $request->get('status');
-        
+
         if($request->file('avatar')){
             if($user->avatar && file_exists(storage_path('app/public/' . $user->avatar))){
                 \Storage::delete('public/'.$user->avatar);
@@ -112,6 +112,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = \App\User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('users.index')->with('status', 'User successfully delete');
     }
 }
